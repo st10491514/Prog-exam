@@ -1,0 +1,49 @@
+public class ProductSales implements ProductSalesInterface {
+
+    @Override
+    public int TotalSales(int[][] productSales) {
+        int total = 0;
+        for (int[] yearSales : productSales) {
+            for (int sale : yearSales) {
+                total += sale;
+            }
+        }
+        return total;
+    }
+
+    @Override
+    public double AverageSales(int[][] productSales) {
+        int total = TotalSales(productSales);
+        int count = 0;
+        for (int[] yearSales : productSales) {
+            count += yearSales.length;
+        }
+        return (double) total / count;
+    }
+
+    @Override
+    public int MaxSale(int[][] productSales) {
+        int max = Integer.MIN_VALUE;
+        for (int[] yearSales : productSales) {
+            for (int sale : yearSales) {
+                if (sale > max) {
+                    max = sale;
+                }
+            }
+        }
+        return max;
+    }
+
+    @Override
+    public int MinSale(int[][] productSales) {
+        int min = Integer.MAX_VALUE;
+        for (int[] yearSales : productSales) {
+            for (int sale : yearSales) {
+                if (sale < min) {
+                    min = sale;
+                }
+            }
+        }
+        return min;
+    }
+}
